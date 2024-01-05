@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ArmourerApi:jar">
+    <output-path>$USER_HOME$/Downloads/nanatsu 7-04/plugins</output-path>
+    <root id="archive" name="ArmourerApi.jar">
+      <element id="module-output" name="ArmourerAPI" />
+    </root>
+  </artifact>
+</component>

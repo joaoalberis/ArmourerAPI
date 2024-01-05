@@ -1,0 +1,8 @@
+name: ArmourerApi
+main: tech.joaoalberis.ArmourerApi
+version: 1.0
+author: MrJoao
+description: Api desenvolvida para fazer interação com o mod armourer's workshop.
+commands:
+  aweden:
+    description: §cSetar aw no player.
