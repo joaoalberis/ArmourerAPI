@@ -33,20 +33,20 @@ public class AwEden implements CommandExecutor {
                             if (args[1] != null && args[2] != null && verifyExistsItem(itemStack)){
                                 ItemStack newItem = aw.setSkin(itemStack, args[1], TypeAws.valueOf(args[2]));
                                 player.setItemInHand(newItem);
-                                player.sendMessage("Rede Eden | Skin AW foi editada de: " + aw.getAwName(itemStack) + " para " + aw.getAwName(newItem));
+                                player.sendMessage("§a§lRede§f§lEden §7| §aSkin AW foi editada de: §c" + aw.getAwName(itemStack) + " §apara §e" + aw.getAwName(newItem));
                             }
                             break;
                         case "add":
                             if (args[1] != null && args[2] != null && verifyExistsItem(itemStack)){
                                 ItemStack newItem = aw.addSkin(itemStack, args[1], TypeAws.valueOf(args[2]));
                                 player.setItemInHand(newItem);
-                                player.sendMessage("Rede Eden | Skin AW " + aw.getAwName(newItem) + " foi colocado no item " + newItem.getType().toString());
+                                player.sendMessage("§a§lRede§f§lEden §7| §aSkin AW §c" + aw.getAwName(newItem) + " §afoi colocado no item §e" + newItem.getType().toString());
                             }
                             break;
                         case "remove":
                             ItemStack newItem = aw.removeSkin(itemStack);
                             player.setItemInHand(newItem);
-                            player.sendMessage("Rede Eden | Skin "+ aw.getAwName(itemStack) + " foi removida!");
+                            player.sendMessage("§a§lRede§f§lEden §7| §aSkin "+ aw.getAwName(itemStack) + " foi removida!");
                             break;
                         case "list":
                             String types = aw.listTypesString();
@@ -54,27 +54,28 @@ public class AwEden implements CommandExecutor {
                             break;
                         case "view":
                             String awName = aw.getAwName(itemStack);
-                            player.sendMessage("Rede Eden | A AW atual deste item é: " + awName);
+                            player.sendMessage("§a§lRede§f§lEden §7| §aA AW atual deste item é: §c" + awName);
                             break;
                         case "help":
                             sendMessageHelp(player);
                             break;
                         default:
-                            player.sendMessage(ChatColor.RED + "Comando incorreto! Utilize: /aweden help");
+                            player.sendMessage(ChatColor.DARK_RED + "Comando Incorreto. Utilize " + ChatColor.GREEN + "/aweden help " + ChatColor.DARK_RED + "para obter ajuda.");
                             break;
                     }
                 }catch (IllegalArgumentException ex){
                     try {
-                        throw new InvalidTypeAwException("Rede Eden | Esse tipo AW não existe, use /aweden list e veja as AW's existentes.");
+                        throw new InvalidTypeAwException("§a§lRede§f§lEden §7| §cEsse tipo AW não existe, use /aweden list e veja as AW's existentes.");
                     } catch (InvalidTypeAwException e) {
                         player.sendMessage(e.getMessage());
                     }
                 } catch (InvalidTypeItemException | InvalidAwException | NoItemInHandException e) {
-                    player.sendMessage("Rede Eden | " + e.getMessage());
+                    player.sendMessage("§a§lRede§f§lEden §7| §c" + e.getMessage());
                 }
 
             }else {
-                player.sendMessage(ChatColor.RED + "Comando incorreto! Utilize: /aweden help");
+                player.sendMessage(ChatColor.DARK_GREEN + "ArmourerApi version 1.1 by MrJoao");
+                player.sendMessage(ChatColor.GOLD + "Use " + ChatColor.DARK_GREEN + "/aweden help " + ChatColor.GOLD + "for help.");
             }
         }
         return true;
@@ -82,18 +83,18 @@ public class AwEden implements CommandExecutor {
 
     private boolean verifyExistsItem(ItemStack itemStack) throws NoItemInHandException {
         if (itemStack.getType().equals(Material.AIR)){
-            throw new NoItemInHandException("Você precisa está com um item na mão!");
+            throw new NoItemInHandException("Para utilizar este comando é necessario possuir um item em sua mão.");
         }
         return true;
     }
 
     private void sendMessageHelp(Player player){
-        player.sendMessage("/-/-/-/-/-/-/-/-/-/-/-/-/-/");
-        player.sendMessage("- /aweden add (nameArmourer) (Type) -> Adiciona uma aw a um item que não contém nenhuma.");
-        player.sendMessage("- /aweden edit (nameArmourer) (Type) -> Edita a aw do item.");
-        player.sendMessage("- /aweden remove -> Remove a aw do item.");
-        player.sendMessage("- /aweden view -> Usado para receber o nome da aw");
-        player.sendMessage("- /aweden list -> Lista todos os tipos disponiveis de Aw's.");
-        player.sendMessage("/-/-/-/-/-/-/-/-/-/-/-/-/-/");
+        player.sendMessage("§e-------------------------------");
+        player.sendMessage("§a➛ /aweden add (NameArmourer) (Type) - Adiciona uma skin AW em um item.");
+        player.sendMessage("§a➛ /aweden edit (NameArmourer) (Type) - Edita a AW de um item.");
+        player.sendMessage("§a➛ /aweden remove  - Remove a skin AW de um item.");
+        player.sendMessage("§a➛ /aweden view - Serve para ver o nome da AW de um Item.");
+        player.sendMessage("§a➛ /aweden list - Mostra todos os tipos de AW's disponiveis.");
+        player.sendMessage("§e-------------------------------");
     }
 }

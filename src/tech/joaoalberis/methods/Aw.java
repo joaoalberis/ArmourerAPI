@@ -88,7 +88,7 @@ public class Aw implements IAwEden {
     @Override
     public String listTypesString() {
         TypeAws[] types = TypeAws.values();
-        StringBuilder builder = new StringBuilder("Rede Eden | §cAW's List: §a");
+        StringBuilder builder = new StringBuilder("§a§lRede§f§lEden §7| §cAW's List: §a");
         for (TypeAws type : types){
             if(type.equals(types[types.length - 1])){
                 builder.append(type);
@@ -133,7 +133,7 @@ public class Aw implements IAwEden {
             nms.tag = new NBTTagCompound();
         }
 
-        if (nms.getTag().hasKey("armourersWorkshop")) throw new InvalidAwException("Você não pode adicionar uma aw em um item que ja contem, utilize o edit!");
+        if (nms.getTag().hasKey("armourersWorkshop")) throw new InvalidAwException("Este item já possui uma skin AW!");
 
         NBTTagCompound compoundSkin = new NBTTagCompound();
 

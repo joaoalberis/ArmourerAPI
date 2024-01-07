@@ -5,4 +5,4 @@ author: MrJoao
 description: Api desenvolvida para fazer interação com o mod armourer's workshop.
 commands:
   aweden:
-    description: §cSetar aw no player.
+    description: §cArmourerApi Help.
